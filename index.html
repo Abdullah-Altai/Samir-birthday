@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#07070a" />
+  <title>ذكرى ما تنسى</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+  <button class="sound-btn" id="soundBtn" aria-label="تشغيل الموسيقى">♫</button>
+  <audio id="bgMusic" loop preload="none">
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <main id="app">
+    <section class="screen active" id="introScreen">
+      <div class="opening-message">
+        <div class="opening-line opening-badge">رسالة خاصة</div>
+        <p class="opening-line opening-from">من صديقك عبدالله</p>
+        <h1 class="opening-line">إلى شخص عزيز على قلبي</h1>
+        <p class="opening-line opening-text">شخص ما كانت مواقفه عابرة، ولا ذكرياته قابلة للنسيان.</p>
+        <p class="opening-line opening-text">هذا الموقع مو مجرد معايدة… هذا مكان صغير جمعت بيه كلام ما كدرت أقوله كله وجهًا لوجه.</p>
+        <button class="primary-btn opening-line" id="startMemories">ابدأ الذكريات</button>
+      </div>
+    </section>
+
+    <section class="screen" id="memoriesScreen">
+      <div class="section-head">
+        <span id="memoryCounter">1 من 10</span>
+        <h2>ألبوم الذكريات</h2>
+        <p>كل صورة ورائها موقف… وكل موقف بقى بقلبي.</p>
+      </div>
+
+      <div class="polaroid-stage" id="polaroidStage"></div>
+      <button class="primary-btn" id="nextMemory">تم ✓</button>
+    </section>
+
+    <section class="screen" id="letterScreen">
+      <div class="long-letter">
+        <div class="paper-mark">رسالة</div>
+        <h2>بصراحة، أكو كلام هواي كلش بقلبي إلك.</h2>
+        <div class="letter-text">
+          <p>إنت شخص مو عادي أبد بحياتي، وأعتذر إذا بالفترة اللي راحت قصرت وياك واختفيت. جانت عندي ظروف نفسية صعبة، منها مشاكل نفسية، ومنها أمور وشغل جنت أحاول أبدأ بيه، غير انشغالات الحياة.</p>
+          <p>بصراحة، الكلام اللي ينكال من القلب عمره ما يكون جذب ولا مجاملة. أني بطبعي ما أحب أجامل أحد ولا أعطي شخص أكثر من قيمته، بس إنت ما لكيت إلك قيمة محددة عندي، لأنك أكبر من أي قيمة تنوصف. إنت شخص عظيم، وإنت بطل.</p>
+          <p>إنت اللي واسيتني، وسندتني، وسمعتني بوقت كنت محتاج بيه أحد يسمعني، ونصحتني بوقت ضياعي. بالنسبة إلي، ما كنت شخص عادي أبد. طول ما إنت وياي، أحس نفسي أصير أحسن وأقوى.</p>
+          <p>تعلمت منك الصبر، وتعلمت منك القناعة، وتعلمت منك القوة.</p>
+          <p>إنت شخص أثبتلي إنك أقوى من كل التوقعات. حاولت، وجاهدت، وضحيت بأشياء مو أي شخص يكدر يضحي بيها، من أجل شخص ومن أجل حلم. صحيح النهاية ما كانت مثل ما تمنيت، ولا مثل ما تمنينا كلنا، لكن هاي النهاية أبدًا ما توصف ضعفك. بالعكس، هي تثبت شكد إنت قوي.</p>
+          <p>إنت أقوى من أي شخص شفته بحياتي. حاولت وضحيت، لكن ما صار نصيب. فلا تمل، ولا تيأس، لأني متأكد إنك تكدر توصل لكلشي تتمناه.</p>
+          <p>مرات الحياة ما تعطينا كلشي نريده، بس الإنسان بإرادته وقوته يكدر يصنع اللي يريده. وإنت من الأشخاص اللي يكدرون يواجهون الحياة مهما كانت صعبة.</p>
+          <p>أتمنى من كل قلبي أشوفك واصل للمكان اللي تستحقه، لأنك فعلًا تستاهل كل خير. ولا تتوقع أني أكول هالكلام علمود مجاملة أو مصلحة، أبدًا. أكوله لأنك شخص وقفت وياي من احتجتك، وكنت صادق وياي طول فترة معرفتي بيك. إنت شخص كد الثقة، وكد الكلمة، ورجال بمعنى الكلمة.</p>
+          <p>أتمنى لو أكدر أوصف امتناني إلك بكلام أكثر من هذا، لكن مهما أحچي أحس الكلام يبقى قليل بحقك.</p>
+          <p>وبالأخير، أحب أكلك: كل عام وإنت بألف خير، والله يطول بعمرك، ويوفقك بكل خطوة بحياتك.</p>
+          <p>وأختمها بكلمة وحدة…</p>
+          <p>إنت بطل، فلا تستسلم أبدًا.</p>
+          <p class="signature">من صديقك عبدالله 🤍</p>
+        </div>
+        <button class="primary-btn" id="toReply">اكتب رسالتك لعبدالله</button>
+      </div>
+    </section>
+
+    <section class="screen" id="replyScreen">
+      <div class="reply-card">
+        <span class="reply-icon">✍️</span>
+        <h2>وصلت لنهاية رسالتي</h2>
+        <p>هسه دورك… اكتبلي الكلام اللي بقلبك.</p>
+        <form id="replyForm">
+          <label>رسالتك</label>
+          <textarea id="senderMessage" rows="7" maxlength="1500" placeholder="اكتب رسالتك لعبدالله هنا…" required></textarea>
+          <div class="emoji-row" id="emojiRow">
+            <button type="button" data-emoji="🤍">🤍</button>
+            <button type="button" data-emoji="❤️">❤️</button>
+            <button type="button" data-emoji="🫂">🫂</button>
+            <button type="button" data-emoji="🥹">🥹</button>
+          </div>
+          <button class="primary-btn" type="submit">أرسل رسالتي</button>
+        </form>
+        <div class="success-box" id="successBox">
+          <div>✓</div>
+          <h3>وصلت رسالتك لعبدالله</h3>
+          <p>بعض الكلام يبقى بالقلب، وبعضه لازم يوصل.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+</body>
+</html>
