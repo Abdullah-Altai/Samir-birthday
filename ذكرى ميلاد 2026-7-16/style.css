@@ -1,0 +1,131 @@
+:root{
+  --bg:#07070a;
+  --bg2:#101018;
+  --gold:#d4af67;
+  --gold2:#f0d99a;
+  --paper:#f7f0df;
+  --ink:#27221c;
+  --muted:#aaa3b2;
+  --white:#fff;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:radial-gradient(circle at top,#1a1722 0,#09090d 40%,#050507 100%);font-family:"Cairo",sans-serif;color:var(--white);overflow-x:hidden}
+body{min-height:100vh}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.stars{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.5;animation:twinkle var(--d) infinite ease-in-out}
+@keyframes twinkle{50%{opacity:.08;transform:scale(.6)}}
+#app{position:relative;z-index:2;min-height:100vh}
+.screen{display:none;min-height:100vh;padding:28px 18px;align-items:center;justify-content:center;flex-direction:column;animation:fadeIn .8s ease}
+.screen.active{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.intro-glow{position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(212,175,103,.16);filter:blur(55px);top:17%}
+.eyebrow{letter-spacing:2px;color:var(--gold2);margin-bottom:34px;font-family:"Reem Kufi",sans-serif}
+.envelope-wrap{width:min(88vw,430px);height:300px;perspective:1400px;margin-bottom:30px;position:relative}
+.envelope{position:absolute;left:0;right:0;bottom:0;height:260px;transform-style:preserve-3d;filter:drop-shadow(0 28px 45px rgba(0,0,0,.58))}
+.env-back{position:absolute;inset:20px 0 0;border-radius:18px;background:linear-gradient(145deg,#d7bd88,#f0ddb3);z-index:1;box-shadow:inset 0 1px rgba(255,255,255,.5)}
+.letter-mini{position:absolute;left:7%;right:7%;bottom:18px;height:220px;background:linear-gradient(180deg,#fffaf0,#f3e8d1);color:#33291e;border-radius:11px 11px 7px 7px;z-index:2;display:grid;place-items:center;text-align:center;padding:24px;box-shadow:0 8px 22px rgba(60,42,18,.18);transform:translateY(0);transition:transform 1.4s cubic-bezier(.2,.78,.2,1),opacity .5s;overflow:hidden}
+.letter-mini:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(70,45,15,.025) 0 1px,transparent 1px 5px)}
+.mini-content{position:relative;display:flex;flex-direction:column;gap:9px;align-items:center}
+.mini-label{font-size:12px;color:#8d6b35}.mini-content strong{font-family:"Reem Kufi";font-size:22px}.mini-content small{color:#9b8a74}
+.env-pocket{position:absolute;bottom:0;z-index:5;pointer-events:none}
+.env-pocket-left{left:0;width:51%;height:205px;background:linear-gradient(145deg,#edd9ad,#cdb17b);clip-path:polygon(0 0,100% 58%,100% 100%,0 100%);border-radius:0 0 0 18px}
+.env-pocket-right{right:0;width:51%;height:205px;background:linear-gradient(215deg,#eedcb4,#d1b57f);clip-path:polygon(0 58%,100% 0,100% 100%,0 100%);border-radius:0 0 18px 0}
+.env-pocket-bottom{left:0;right:0;height:145px;background:linear-gradient(180deg,#dcc28f,#caa96d);clip-path:polygon(0 100%,50% 28%,100% 100%);border-radius:0 0 18px 18px;z-index:6}
+.env-flap{position:absolute;top:20px;left:0;right:0;height:170px;background:linear-gradient(165deg,#f2dfb6,#d5ba85);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0;z-index:8;transition:transform 1.15s cubic-bezier(.32,.02,.2,1),z-index 0s .55s;backface-visibility:hidden}
+.seal{position:absolute;z-index:10;top:126px;left:50%;transform:translateX(-50%);width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#be2637,#71131e 68%);display:grid;place-items:center;font-family:"Reem Kufi";box-shadow:0 9px 18px rgba(0,0,0,.34),inset 0 1px 2px rgba(255,255,255,.25);transition:opacity .45s,transform .45s}
+.envelope-wrap.open .env-flap{transform:rotateX(180deg);z-index:0}
+.envelope-wrap.open .seal{opacity:0;transform:translateX(-50%) scale(.35)}
+.envelope-wrap.lift .letter-mini{transform:translateY(-125px);z-index:9}
+.envelope-wrap.fade-envelope .env-back,.envelope-wrap.fade-envelope .env-pocket,.envelope-wrap.fade-envelope .env-flap{opacity:0;transition:opacity .75s ease}
+.envelope-wrap.fade-envelope{filter:none}
+.morph-letter{position:fixed!important;z-index:100!important;margin:0!important;transform:none!important;transition:left .9s cubic-bezier(.2,.75,.2,1),top .9s cubic-bezier(.2,.75,.2,1),width .9s cubic-bezier(.2,.75,.2,1),height .9s cubic-bezier(.2,.75,.2,1),border-radius .9s ease,opacity .35s ease!important;box-shadow:0 30px 80px rgba(0,0,0,.55)!important}
+.morph-letter .mini-content{transition:opacity .3s}.morph-letter.expanding .mini-content{opacity:0}
+.envelope-ui-hide{opacity:0!important;transform:translateY(14px)!important;transition:.45s ease!important;pointer-events:none}
+.primary-btn{border:1px solid rgba(240,217,154,.5);background:linear-gradient(135deg,#d4af67,#8f6b2f);color:#100d08;padding:14px 28px;border-radius:999px;font-weight:800;min-width:170px;box-shadow:0 8px 28px rgba(212,175,103,.22);transition:.25s}
+.primary-btn:active{transform:scale(.97)}
+.pulse{animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 12px rgba(212,175,103,0)}}
+.tiny-note{font-size:12px;color:#8e8894;margin-top:16px;text-align:center}
+.sound-btn{position:fixed;z-index:20;top:18px;left:18px;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(12,12,16,.65);backdrop-filter:blur(10px);color:var(--gold2)}
+.paper-card,.long-letter{width:min(92vw,760px);background:linear-gradient(#fffaf0,#eee2ca);color:var(--ink);border-radius:18px;padding:34px 24px;box-shadow:0 30px 80px rgba(0,0,0,.55);position:relative;overflow:hidden}
+.paper-card:before,.long-letter:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(60,40,20,.025) 0 1px,transparent 1px 5px);pointer-events:none}
+.paper-card h1,.long-letter h2{font-family:"Reem Kufi";margin:8px 0 18px;color:#2d241a}
+.paper-card p,.letter-text p{line-height:2.05}
+.paper-mark{display:inline-block;padding:6px 14px;border:1px solid #a98b55;border-radius:50px;color:#7b5c29;font-size:13px}
+.reveal-card{animation:paperReveal .75s ease}.intro-prep .reveal-card{opacity:0}.intro-ready .reveal-card{opacity:1}
+@keyframes paperReveal{from{opacity:0;transform:translateY(50px) rotateX(8deg)}to{opacity:1;transform:none}}
+.section-head{text-align:center;margin-bottom:22px}
+.section-head span{color:var(--gold2);font-size:13px}
+.section-head h2{font-family:"Reem Kufi";margin:5px 0}
+.section-head p{color:var(--muted);font-size:13px;margin:0}
+.polaroid-stage{position:relative;width:min(88vw,380px);height:515px;margin-bottom:22px}
+.polaroid{position:absolute;inset:0;background:#f4efe5;padding:13px 13px 24px;border-radius:8px;box-shadow:0 24px 50px rgba(0,0,0,.55);color:#2b2520;transform:rotate(var(--rot));transition:1s cubic-bezier(.2,.8,.2,1);overflow:hidden}
+.polaroid img{width:100%;height:360px;object-fit:cover;border-radius:4px;background:#24222a}
+.polaroid .caption{padding:17px 10px 0;text-align:center;line-height:1.7;font-weight:700;font-size:15px}
+.polaroid.fly{transform:translateY(-140%) rotate(-12deg);opacity:0}
+.long-letter{margin:20px auto;padding-bottom:40px}
+.letter-text{position:relative;z-index:1}
+.highlight{font-weight:800;font-size:20px;text-align:center;color:#6d4d1d;border-top:1px solid rgba(80,55,20,.25);border-bottom:1px solid rgba(80,55,20,.25);padding:20px 0}
+.signature{text-align:left;font-weight:800}
+.reply-card{width:min(92vw,560px);background:rgba(19,18,25,.88);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:30px 22px;box-shadow:0 30px 80px rgba(0,0,0,.55);backdrop-filter:blur(14px);text-align:center}
+.reply-icon{font-size:42px}.reply-card h2{font-family:"Reem Kufi"}.reply-card p{color:var(--muted)}
+form{text-align:right;margin-top:24px}label{display:block;margin:14px 4px 8px;color:#e8e2ed;font-size:14px}
+input,textarea{width:100%;border:1px solid rgba(255,255,255,.12);background:#0e0d13;color:white;border-radius:14px;padding:14px 16px;outline:none;font-size:16px}
+input:focus,textarea:focus{border-color:var(--gold)}textarea{resize:vertical}
+.emoji-row{display:flex;gap:10px;margin:16px 0;justify-content:center}
+.emoji-row button{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:#15131b;font-size:22px}.emoji-row button.selected{border-color:var(--gold);transform:scale(1.1)}
+form .primary-btn{display:block;margin:18px auto 0}
+.success-box{display:none;padding:25px}.success-box.show{display:block;animation:fadeIn .6s}.success-box>div{width:64px;height:64px;border-radius:50%;margin:auto;background:#2c7d4d;display:grid;place-items:center;font-size:32px}
+@media(max-width:520px){.screen{padding:22px 14px}.polaroid-stage{height:480px}.polaroid img{height:330px}.paper-card,.long-letter{padding:28px 19px}.highlight{font-size:18px}}
+
+
+/* شاشة البداية الجديدة — بدون ظرف */
+.opening-message{
+  width:min(92vw,760px);
+  min-height:430px;
+  padding:48px 34px;
+  border-radius:28px;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  color:var(--ink);
+  background:linear-gradient(160deg,#fffaf0 0%,#f1e3c9 100%);
+  box-shadow:0 32px 90px rgba(0,0,0,.58),0 0 70px rgba(212,175,103,.08);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.opening-message::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(0deg,rgba(60,40,20,.028) 0 1px,transparent 1px 6px);
+  pointer-events:none;
+}
+.opening-message::after{
+  content:"";
+  position:absolute;
+  width:240px;
+  height:240px;
+  border-radius:50%;
+  top:-150px;
+  right:-100px;
+  background:rgba(212,175,103,.18);
+  filter:blur(8px);
+}
+.opening-line{position:relative;z-index:1;opacity:0;transform:translateY(24px);animation:openingReveal .85s cubic-bezier(.2,.72,.2,1) forwards}
+.opening-badge{animation-delay:.15s;border:1px solid #aa8950;border-radius:999px;padding:6px 15px;color:#7a5925;font-size:13px}
+.opening-from{animation-delay:.75s;color:#8a6b39;margin:22px 0 4px;font-weight:700}
+.opening-message h1{animation-delay:1.35s;font-family:"Reem Kufi",sans-serif;font-size:clamp(28px,5vw,48px);line-height:1.45;margin:5px 0 20px;color:#2d241a}
+.opening-text{animation-delay:2.05s;font-size:clamp(15px,2.2vw,19px);line-height:2;margin:4px 0;max-width:650px}
+.opening-text:nth-of-type(3){animation-delay:2.75s}
+.opening-message .primary-btn{animation-delay:3.55s;margin-top:28px}
+@keyframes openingReveal{to{opacity:1;transform:translateY(0)}}
+@media(max-width:520px){
+  .opening-message{min-height:500px;padding:36px 20px;border-radius:22px}
+  .opening-message h1{font-size:31px}
+}
+@media(prefers-reduced-motion:reduce){.opening-line{animation-duration:.2s;animation-delay:0s!important}}
